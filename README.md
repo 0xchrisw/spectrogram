@@ -33,6 +33,8 @@ Streams audio from the specified input devices and generate Mel-frequency spectr
 
 ![Alloy](/docs/alloy_output.png)
 
+![CLI](/docs/cli_output.png)
+
 
 ## References
   - [Streaming audio in WSL](https://www.reddit.com/r/bashonubuntuonwindows/comments/hrn1lz/wsl_sound_through_pulseaudio_solved/)
