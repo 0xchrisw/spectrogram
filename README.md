@@ -25,3 +25,8 @@ Streams audio from the specified input devices and generate Mel-frequency spectr
   ```
     spectrogram
   ```
+
+
+## Examples
+![Echo](/examples/echo_output.png)
+![Alloy](/examples/alloy_output.png)
