@@ -3,6 +3,7 @@ import sounddevice as sd
 import librosa
 import librosa.display
 import matplotlib.pyplot as plt
+import sys
 from typing import Optional
 
 
@@ -41,7 +42,6 @@ def stream_audio_to_spectrogram(
         plt.figure(figsize=(10, 4))
         spectrogram = np.zeros((n_mels, chunk_size // hop_length + 1))
 
-        # Audio callback function
         def audio_callback(indata: np.ndarray, frames: int, time, status: sd.CallbackFlags) -> None:
             nonlocal spectrogram
             if status:
@@ -51,19 +51,18 @@ def stream_audio_to_spectrogram(
             S_dB = librosa.power_to_db(S, ref=np.max)
             spectrogram = np.hstack((spectrogram[:, 1:], S_dB))
 
-        # Open the audio stream
         with sd.InputStream(device=device, channels=1, callback=audio_callback, blocksize=chunk_size, samplerate=sample_rate):
             print("Streaming started... Press Ctrl+C to stop.")
             while True:
-                plt.clf()
-                S_dB = librosa.power_to_db(spectrogram, ref=np.max)
-                librosa.display.specshow(S_dB, sr=sample_rate, hop_length=hop_length, x_axis='time', y_axis='mel')
-                plt.colorbar(format='%+2.0f dB')
-                plt.title("Real-time Mel-frequency spectrogram")
-                plt.draw()
-                plt.pause(0.01)
+                # This loop keeps the stream alive, but does not update the plot in real-time.
+                pass
 
     except KeyboardInterrupt:
-        # When Ctrl+C is pressed, save the current spectrogram to a file
+        # When Ctrl+C is pressed, plot and save the current spectrogram to a file
+        plt.clf()
+        S_dB = librosa.power_to_db(spectrogram, ref=np.max)
+        librosa.display.specshow(S_dB, sr=sample_rate, hop_length=hop_length, x_axis='time', y_axis='mel')
+        plt.colorbar(format='%+2.0f dB')
+        plt.title("Real-time Mel-frequency spectrogram")
         plt.savefig("output.png")
         print("Streaming stopped. Spectrogram saved to output.png.")
