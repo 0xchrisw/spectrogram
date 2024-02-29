@@ -28,5 +28,11 @@ Streams audio from the specified input devices and generate Mel-frequency spectr
 
 
 ## Examples
-![Echo](/examples/echo_output.png)
-![Alloy](/examples/alloy_output.png)
+![Echo](/docs/echo_output.png)
+![Alloy](/docs/alloy_output.png)
+
+
+## References
+  - [Streaming audio in WSL](https://www.reddit.com/r/bashonubuntuonwindows/comments/hrn1lz/wsl_sound_through_pulseaudio_solved/)
+  - [Secure directory creation in Windows](https://github.com/aseering/wsl_gui_autoinstall/issues/8#issuecomment-304552350)
+  - [WSL Issue with helpful comments](https://github.com/microsoft/WSL/issues/5816)
