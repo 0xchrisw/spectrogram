@@ -2,7 +2,7 @@
 
 Create spectrograms from audio files and input data.
 
-Streams audio from the specified input devices and generate Mel-frequency spectrograms. The streaming continues indefinitely until interrupted by the user. The spectrogram is displayed in a window and updated in real-time as new audio data is processed. When the user interrupts the streaming (by pressing Ctrl+C), the current spectrogram is saved to a file named `output.png`.
+Streams audio from the specified input devices and generate Mel-frequency spectrograms. The streaming continues indefinitely until interrupted by the user. The spectrogram is updated in real-time as new audio data is processed. When the user interrupts the streaming (by pressing Ctrl+C), the current spectrogram is saved to a file named `output.png`.
 
 
 ## Requirements:
